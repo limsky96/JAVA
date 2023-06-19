@@ -1,0 +1,16 @@
+
+public class Java_04_Postfix {
+
+	public static void main(String[] args) {
+		int num = 5;
+		System.out.print((num++) + " "); //출력 후에 값이 증가
+		System.out.print((num++) + " "); //출력 후에 값이 증가 
+		System.out.print(num + "\n");
+		
+		System.out.print((num--) + " ");
+		System.out.print((num--) + " ");
+		System.out.print(num);
+
+	}
+
+}
