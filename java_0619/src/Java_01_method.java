@@ -49,5 +49,6 @@ public class Java_01_method {
 			for(int j=i; j<=5; j++) {System.out.print("*");}
 			System.out.println();
 		}
+	
 	}
 }
