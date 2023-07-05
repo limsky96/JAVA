@@ -18,7 +18,7 @@ public class Java_04 {
 		   System.out.println("12의 2진 표현: " + Integer.toBinaryString(12));
 		   System.out.println("12의 8진 표현: " + Integer.toOctalString(12));
 		   System.out.println("12의 16진 표현: " + Integer.toHexString(12));
-
+		   
 	}
 
 }
