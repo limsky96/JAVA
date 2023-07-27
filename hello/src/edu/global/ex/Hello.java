@@ -58,6 +58,19 @@ public class Hello extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		PrintWriter writer = response.getWriter();
+	      
+	    writer.println("<html>");
+	    writer.println("<head>");
+	    writer.println("</head>");
+	    writer.println("<body>");
+	    writer.println("<h1>HelloWorld~~~</h1>");
+	    writer.println("<h1>안녕하세요.</h1>"); 
+	    writer.println("<h1>홍길동</h1>"); 	    
+	    writer.println("</body>");
+	    writer.println("</html>");
+	      
+	    writer.close();
 	}
 
 }
