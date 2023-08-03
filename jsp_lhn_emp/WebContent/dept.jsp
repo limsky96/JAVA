@@ -1,10 +1,10 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="edu.global.dao.DeptCPDao"%>
+<%@page import="java.util.List"%>
 <%@page import="edu.global.dto.DeptDto"%>
 <%@page import="edu.global.dao.DeptDao"%>
 <%@page import="edu.global.dao.DeptCPDao"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,25 +12,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-   DeptCPDao dao = new DeptCPDao();
+   <%
+      DeptCPDao dao = new DeptCPDao();
 
-	dao.deleteDept(55);
-	dao.deleteDept(66);
+      List<DeptDto> dtos = dao.getDepts();
 
-   List<DeptDto> dtos = dao.getDepts();
+      //자바에서 데이터값 넣어서 실행시키기
+      DeptDto dept = new DeptDto(55, "JAVA", "Seoul");
+      dao.insertDept(dept.getDeptno(), dept.getDname(), dept.getLoc());
 
-  	//DeptDto dept = new DeptDto(100, "JAVA", "Seoul"); 
-  //	dao.insertDept(dept.getDeptno(), dept.getDname(), dept.getLoc());
-   
+      dept = new DeptDto(66, "자바", "대구");
+      dao.insertDept(dept.getDeptno(), dept.getDname(), dept.getLoc());
 
-   for(DeptDto dto : dtos){
-	      out.print("부서번호 : " + dto.getDeptno() +
-	              " 직종이름 : " + dto.getDname() + 
-	              " 지역 : " + dto.getLoc() + "<br>");
-	   } 
-   
-   
-%>
+      // 삭제 기능 실행
+      dao.deleteDept(55);
+      dao.deleteDept(66);
+
+      //데이터 테이블 실행시키기
+      for (DeptDto dto : dtos) {
+         out.print("부서번호" + dto.getDeptno() 
+         + "직종이름:" + dto.getDname() 
+         + "지역:" + dto.getLoc() + "<br>");
+
+      }
+   %>
 </body>
 </html>
