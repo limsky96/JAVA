@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.global.project.command.BoardCommand;
+import edu.global.project.command.BoardContentCommand;
+import edu.global.project.command.BoardDeleteCommand;
 import edu.global.project.command.BoardListCommand;
+import edu.global.project.command.BoardModifyCommand;
+import edu.global.project.command.BoardReplyCommand;
+import edu.global.project.command.BoardReplyViewCommand;
 import edu.global.project.command.BoardWriteCommand;
 
 /**
@@ -62,7 +67,7 @@ public class BoardController extends HttpServlet {
       }else if(com.equals("/content_view.do")) {
     	  //http://localhost:8282/jsp_lhn_mvc_board/content_view.do?bid=8
     	  
-    	  command = new BoardListCommand();
+    	  command = new BoardContentCommand();
     	  command.execute(request, response);
     	  
     	  // 해당 request객체를 전달할 view 결정
@@ -70,7 +75,8 @@ public class BoardController extends HttpServlet {
     	  
       }else if(com.equals("/write_view.do")) {
     	  //http://localhost:8282/jsp_lhn_mvc_board/write_view.do
-    	  
+    	  command = new BoardContentCommand();
+    	  command.execute(request, response);
     	  // 해당 request객체를 전달할 view 결정
     	  viewPage = "write_view.jsp";
     	  
@@ -78,6 +84,38 @@ public class BoardController extends HttpServlet {
     	  //http://localhost:8282/jsp_lhn_mvc_board/write.do
     	  
     	  command = new BoardWriteCommand();
+    	  command.execute(request, response);
+    	  
+    	  viewPage = "list.do";
+    	  
+      }else if(com.equals("/modify.do")) {
+    	  //http://localhost:8282/jsp_lhn_mvc_board/modify.do
+    	  
+    	  command = new BoardModifyCommand();
+    	  command.execute(request, response);
+    	  
+    	  viewPage = "list.do";
+    	  
+      }else if(com.equals("/delete.do")) {
+    	  //http://localhost:8282/jsp_lhn_mvc_board/modify.do
+    	  
+    	  command = new BoardDeleteCommand();
+    	  command.execute(request, response);
+    	  
+    	  viewPage = "list.do";
+    	  
+      }else if(com.equals("/reply_view.do")) {
+    	  //http://localhost:8282/jsp_lhn_mvc_board/modify.do
+    	  
+    	  command = new BoardReplyViewCommand();
+    	  command.execute(request, response);
+    	  
+    	  viewPage = "reply_view.jsp";
+    	  
+      }else if(com.equals("/reply.do")) {
+    	  //http://localhost:8282/jsp_lhn_mvc_board/modify.do
+    	  
+    	  command = new BoardReplyCommand();
     	  command.execute(request, response);
     	  
     	  viewPage = "list.do";
